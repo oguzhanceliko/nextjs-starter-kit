@@ -4,12 +4,19 @@
     "es6": true
   },
   "extends": [
+    "next",
+    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "prettier",
     "plugin:import/typescript"
   ],
+  "settings": {
+    "react": {
+      "version": "18.2.0"
+    }
+  },
   "parser": "@typescript-eslint/parser",
 
   "parserOptions": {

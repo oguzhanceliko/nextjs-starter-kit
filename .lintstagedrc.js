@@ -1,16 +1,19 @@
 const path = require("path");
 
-const buildEslintCommand = (filenames) =>
-    `next lint --fix --file ${filenames
-        .map((f) => path.relative(process.cwd(), f))
-        .join(" --file ")}`;
-
-const buildPrettierCommand = (filenames) =>
-    `npm run prettier:fix --ignore-unknown ${filenames
-        .map((f) => path.relative(process.cwd(), f))
-        .join(" --file ")}`;
-
 module.exports = {
-    ".{js,jsx,ts,tsx}": [buildPrettierCommand, buildEslintCommand],
-    ".{md,json}": [buildPrettierCommand],
+  "**/*.{js,jsx,ts,tsx}": (filenames) => {
+    const eslintCommand = `next lint --fix --file ${filenames
+      .map((f) => path.relative(process.cwd(), f))
+      .join(" --file ")}`;
+    const prettierCommand = `npm run prettier:fix --ignore-unknown ${filenames
+      .map((f) => path.relative(process.cwd(), f))
+      .join(" ")}`;
+    return [prettierCommand, eslintCommand];
+  },
+  "**/*.{md,json}": (filenames) => {
+    const prettierCommand = `npm run prettier:fix --ignore-unknown ${filenames
+      .map((f) => path.relative(process.cwd(), f))
+      .join(" ")}`;
+    return [prettierCommand];
+  },
 };

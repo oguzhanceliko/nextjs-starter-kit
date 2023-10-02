@@ -7,4 +7,4 @@
 
 4. Prettier kurup .prettierrc.json dosyası oluşturup içerisinde kurallarımızı yaptık. Vscode üzerinden auto-save açık hale getirdik.
 
-5. Eslint
+5. Eslint için tsx,jsx dosyalarında ve prettier ile birlikte kullanmayı sağlayacak gerekli paketleri yükledik. Eslinti aktif hale getirdik.
